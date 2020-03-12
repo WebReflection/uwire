@@ -1,0 +1,41 @@
+{
+  "name": "uwire",
+  "version": "0.0.0",
+  "description": "A way to create persistent fragments",
+  "main": "./cjs/index.js",
+  "scripts": {
+    "build": "npm run cjs && npm run rollup:es && npm run rollup:babel && npm run min && npm run test",
+    "cjs": "ascjs esm cjs",
+    "rollup:es": "rollup --config rollup/es.config.js",
+    "rollup:babel": "rollup --config rollup/babel.config.js",
+    "min": "uglifyjs index.js --support-ie8 --comments=/^!/ -c -m -o min.js",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "test": "nyc node test/index.js"
+  },
+  "keywords": ["udomdiff", "wire", "persistent", "fragment"],
+  "author": "Andrea Giammarchi",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "ascjs": "^3.1.2",
+    "basichtml": "^2.1.4",
+    "coveralls": "^3.0.9",
+    "nyc": "^15.0.0",
+    "rollup": "^2.0.5",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "uglify-js": "^3.8.0"
+  },
+  "module": "./esm/index.js",
+  "type": "module",
+  "exports": {
+    "import": "./esm/index.js",
+    "default": "./cjs/index.js"
+  },
+  "unpkg": "min.js",
+  "dependencies": {
+    "uarray": "^1.0.0"
+  }
+}
