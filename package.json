@@ -12,7 +12,12 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "test": "nyc node test/index.js"
   },
-  "keywords": ["udomdiff", "wire", "persistent", "fragment"],
+  "keywords": [
+    "udomdiff",
+    "wire",
+    "persistent",
+    "fragment"
+  ],
   "author": "Andrea Giammarchi",
   "license": "ISC",
   "devDependencies": {
@@ -37,5 +42,13 @@
   "unpkg": "min.js",
   "dependencies": {
     "uarray": "^1.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebReflection/uwire.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WebReflection/uwire/issues"
+  },
+  "homepage": "https://github.com/WebReflection/uwire#readme"
 }
