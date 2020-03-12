@@ -1,6 +1,6 @@
 {
   "name": "uwire",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A way to create persistent fragments",
   "main": "./cjs/index.js",
   "scripts": {
