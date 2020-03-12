@@ -23,7 +23,9 @@ exports.diffable = diffable;
 const persistent = fragment => {
   const {childNodes} = fragment;
   const {length} = childNodes;
-  if (length === 1)
+  // If the fragment has no content
+  // it should return undefined and break
+  if (length < 2)
     return childNodes[0];
   const nodes = slice.call(childNodes, 0);
   const firstChild = nodes[0];
