@@ -15,3 +15,17 @@ diffable(wire, -1); // remove all nodes and return the firstChild
 ```
 
 If the fragment has only one child node, the `diffable` will always return that child node instead, making it a no-op.
+
+### Why it this called _wire_?
+
+It's like attaching, via strings (_wires_), the behavior of a _fragment_ that cannot be used to obtain the same result.
+
+A _wire_ is not really a fragment per se, but it carries with it all it's needed to reuse, move, remove, re-append, such fragment.
+
+```
+      ┌--------▶[fragment]
+◀---[wire]        |
+        ├--------▶├ firstChild
+        |         ├ ...
+        └--------▶└ lastChild
+```
