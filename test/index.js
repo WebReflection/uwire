@@ -3,7 +3,10 @@ const {document} = require('basichtml').init();
 const {diffable, persistent} = require('../cjs');
 
 const fragmentSingle = document.createDocumentFragment();
-fragmentSingle.appendChild(document.createTextNode('a'));
+console.assert(persistent(fragmentSingle) === fragmentSingle, 'no childNodes');
+
+const a = fragmentSingle.appendChild(document.createTextNode('a'));
+console.assert(persistent(fragmentSingle) === a, 'a childNode');
 
 const fragmentMulti = document.createDocumentFragment();
 fragmentMulti.appendChild(document.createTextNode('a'));
