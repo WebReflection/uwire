@@ -19,24 +19,19 @@ export const diffable = (node, operation) => node.nodeType === nodeType ?
 ;
 
 export const persistent = fragment => {
+  const {firstChild, lastChild} = fragment;
+  if (firstChild === lastChild)
+    return lastChild || fragment;
   const {childNodes} = fragment;
-  const {length} = childNodes;
-  if (length < 2)
-    return length ? childNodes[0] : fragment;
   const nodes = slice.call(childNodes, 0);
-  const firstChild = nodes[0];
-  const lastChild = nodes[length - 1];
   return {
     ELEMENT_NODE,
     nodeType,
     firstChild,
     lastChild,
     valueOf() {
-      if (childNodes.length !== length) {
-        let i = 0;
-        while (i < length)
-          fragment.appendChild(nodes[i++]);
-      }
+      if (childNodes.length !== nodes.length)
+        fragment.append(...nodes);
       return fragment;
     }
   };
