@@ -34,16 +34,13 @@ var uwire = (function (exports) {
     throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
-  var _ref = [],
-      slice = _ref.slice;
-
   var ELEMENT_NODE = 1;
   var nodeType = 111;
 
   var remove = function remove(_ref) {
     var firstChild = _ref.firstChild,
         lastChild = _ref.lastChild;
-    var range = document.createRange();
+    var range = lastChild.ownerDocument.createRange();
     range.setStartAfter(firstChild);
     range.setEndAfter(lastChild);
     range.deleteContents();
@@ -58,7 +55,9 @@ var uwire = (function (exports) {
         lastChild = fragment.lastChild;
     if (firstChild === lastChild) return lastChild || fragment;
     var childNodes = fragment.childNodes;
-    var nodes = slice.call(childNodes, 0);
+
+    var nodes = _toConsumableArray(childNodes);
+
     return {
       ELEMENT_NODE: ELEMENT_NODE,
       nodeType: nodeType,

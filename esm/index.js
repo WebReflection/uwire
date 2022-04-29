@@ -1,10 +1,8 @@
-import {slice} from 'uarray';
-
 const ELEMENT_NODE = 1;
 const nodeType = 111;
 
 const remove = ({firstChild, lastChild}) => {
-  const range = document.createRange();
+  const range = lastChild.ownerDocument.createRange();
   range.setStartAfter(firstChild);
   range.setEndAfter(lastChild);
   range.deleteContents();
@@ -23,7 +21,7 @@ export const persistent = fragment => {
   if (firstChild === lastChild)
     return lastChild || fragment;
   const {childNodes} = fragment;
-  const nodes = slice.call(childNodes, 0);
+  const nodes = [...childNodes];
   return {
     ELEMENT_NODE,
     nodeType,
