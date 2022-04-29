@@ -40,7 +40,7 @@ var uwire = (function (exports) {
   var remove = function remove(_ref) {
     var firstChild = _ref.firstChild,
         lastChild = _ref.lastChild;
-    var range = lastChild.ownerDocument.createRange();
+    var range = document.createRange();
     range.setStartAfter(firstChild);
     range.setEndAfter(lastChild);
     range.deleteContents();

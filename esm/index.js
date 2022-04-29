@@ -2,7 +2,7 @@ const ELEMENT_NODE = 1;
 const nodeType = 111;
 
 const remove = ({firstChild, lastChild}) => {
-  const range = lastChild.ownerDocument.createRange();
+  const range = document.createRange();
   range.setStartAfter(firstChild);
   range.setEndAfter(lastChild);
   range.deleteContents();
